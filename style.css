@@ -1,0 +1,155 @@
+/* style.css - Estilo responsivo*/
+
+:root {
+  /* Cores alegres */
+  --cor-primaria: #4a6fa5;
+  --cor-secundaria: #6DC5D1;
+  --cor-fundo: #f8f4e3;
+  --cor-texto: #333333;
+  --cor-destaque: #e85a71;
+  --cor-link: #166088;
+  --cor-link-hover: #4a6fa5;
+  --cor-cabecalho: #4a6fa5;
+  --cor-tabela-impar: #e4f0f6;
+  --cor-tabela-par: #d4e6f1;
+  
+  --fonte-principal: Arial, sans-serif;
+  --fonte-titulos: 'Times New Roman', sans-serif;
+  
+  /* Espaçamentos */
+  --espacamento-pequeno: 0.5rem;
+  --espacamento-medio: 1rem;
+  --espacamento-grande: 1.5rem;
+  
+  /* Tamanhos de fonte */
+  --tamanho-fonte-pequeno: 0.875rem;
+  --tamanho-fonte-normal: 1rem;
+  --tamanho-fonte-grande: 1.25rem;
+  --tamanho-fonte-titulo: 1.5rem;
+  --tamanho-fonte-titulo-principal: 2rem;
+}
+
+/* Estilos gerais */
+body {
+  font-family: var(--fonte-principal);
+  font-size: var(--tamanho-fonte-normal);
+  line-height: 1.6;
+  color: var(--cor-texto);
+  background-color: var(--cor-fundo);
+  margin: 0;
+  padding: var(--espacamento-medio);
+  max-width: 100%;
+  overflow-x: hidden;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Títulos */
+h1, h2 {
+  font-family: var(--fonte-titulos);
+  color: var(--cor-cabecalho);
+  margin-top: var(--espacamento-grande);
+  margin-bottom: var(--espacamento-medio);
+}
+
+h1 {
+  font-size: var(--tamanho-fonte-titulo-principal);
+  border-bottom: 2px solid var(--cor-secundaria);
+  padding-bottom: var(--espacamento-pequeno);
+}
+
+h2 {
+  font-size: var(--tamanho-fonte-titulo);
+}
+
+li {
+  list-style-type: none;
+}
+
+/* Links */
+a {
+  color: var(--cor-link);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--cor-link-hover);
+  text-decoration: underline;
+}
+
+/* Tabela com hover */
+table {
+  /* width: 100%; */
+  border-collapse: collapse;
+  margin: var(--espacamento-medio) 0;
+  box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+
+  margin: 0 auto; /* centraliza */
+  width: 90%; /* largura relativa ao container */
+  max-width: 800px; /* largura máxima */
+}
+
+/* Linhas ímpares - hoveráveis */
+table tr:nth-child(odd) {
+  background-color: var(--cor-tabela-impar);
+  cursor: pointer;
+  padding: var(--espacamento-pequeno);
+  border: 1px solid #ddd;
+  transition: background-color 0.3s ease;
+}
+
+/* Linhas pares - inicialmente escondidas */
+table tr:nth-child(even) {
+  background-color: var(--cor-tabela-par);
+  display: none;
+  padding: var(--espacamento-pequeno);
+  border: 1px solid #ddd;
+}
+
+/* Quando hover na linha ímpar, mostra a próxima linha par */
+table tr:nth-child(odd):hover + tr:nth-child(even) {
+  display: table-row;
+}
+
+/* Efeito visual no hover */
+table tr:nth-child(odd):hover {
+  background-color: var(--cor-secundaria);
+  color: white;
+}
+
+/* Estilo para células da tabela */
+table td {
+  padding: var(--espacamento-pequeno);
+  vertical-align: top;
+}
+
+/* Responsividade para telas pequenas */
+@media (max-width: 768px) {
+  :root {
+    --tamanho-fonte-normal: 0.9375rem;
+    --tamanho-fonte-titulo: 1.125rem;
+    --tamanho-fonte-titulo-principal: 1.5rem;
+    --espacamento-medio: 0.75rem;
+    --espacamento-grande: 1rem;
+  }
+  
+  body {
+    padding: var(--espacamento-pequeno);
+  }
+  
+  table {
+    font-size: var(--tamanho-fonte-pequeno);
+  }
+}
+
+/* Melhorias para acessibilidade */
+:focus {
+  outline: 2px solid var(--cor-destaque);
+  outline-offset: 2px;
+}
